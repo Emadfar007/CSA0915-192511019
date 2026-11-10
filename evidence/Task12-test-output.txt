@@ -1,0 +1,9 @@
+TEST                                | EXPECTED | ACTUAL   | RESULT
+------------------------------------------------------------------
+e-bike flat fee                     |    25.00 |    25.00 | PASS
+delivery van peak double rate       |   120.00 |   120.00 | PASS
+delivery van off-peak car rate      |    60.00 |    60.00 | PASS
+delivery van crosses 5 PM           |    90.00 |    90.00 | PASS
+valid visitor one-day pass          |     0.00 |     0.00 | PASS
+original EV charging retained       |   210.00 |   210.00 | PASS
+SUMMARY: 6 passed, 0 failed

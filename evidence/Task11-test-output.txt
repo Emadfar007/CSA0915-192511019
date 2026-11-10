@@ -1,0 +1,16 @@
+TEST                                 | EXPECTED     | ACTUAL       | RESULT
+-----------------------------------------------------------------------------
+two-wheeler 130 minutes              | 30.0         | 30.0         | PASS
+exact boundary 60 minutes            | 30.0         | 30.0         | PASS
+zero-minute parking                  | 0.0          | 0.0          | PASS
+EV 130 minutes plus 10 kWh           | 210.0        | 210.0        | PASS
+hand total collection                | 270.0        | 270.0        | PASS
+first allocated position             | 0:0          | 0:0          | PASS
+last free slot                       | 1:0          | 1:0          | PASS
+full facility                        | exception    | exception    | PASS
+duplicate registration               | exception    | exception    | PASS
+monthly pass is free                 | 0.0          | 0.0          | PASS
+invalid registration on exit         | exception    | exception    | PASS
+unknown vehicle type                 | exception    | exception    | PASS
+invalid slot release                 | false        | false        | PASS
+SUMMARY: 13 passed, 0 failed

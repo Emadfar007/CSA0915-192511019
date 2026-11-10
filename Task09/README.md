@@ -1,0 +1,5 @@
+# Task 9 - Introduce Abstraction
+
+`Vehicle` is abstract because it owns registration state, constructor validation and shared fee/equality behaviour but cannot supply one universal rate. `Chargeable` is an interface because charging is an optional capability independent of the vehicle inheritance chain. An EV can inherit `Car` behaviour and implement one or more interfaces. The interface static validator centralises the non-negative-energy invariant; a default method would suit a shared charging formula when all implementers use it.
+
+If `Vehicle` became an interface, it could have default methods but no instance fields or constructors, so every implementer would repeat/store registration state. If `Chargeable` became an abstract class, `ElectricCar` could not also extend `Car` because Java lacks multiple class inheritance. Invocation is effectively `O(1)` in both designs. Interface state adds no per-object fields; an abstract superclass may contribute fields to every object. The selected direction expresses stateful identity plus optional multiple capabilities.
