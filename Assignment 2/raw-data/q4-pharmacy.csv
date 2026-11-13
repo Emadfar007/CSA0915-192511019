@@ -1,0 +1,10 @@
+medicines,map,lookup_avg_ns,code_report_avg_ns,iteration_report_avg_ns,natural_code_order,natural_insertion_order
+100,HashMap,85,465080,52920,false,false
+100,TreeMap,144,72780,44460,true,false
+100,LinkedHashMap,32,104060,64280,false,true
+1000,HashMap,37,1171520,165900,false,false
+1000,TreeMap,178,164620,157200,true,false
+1000,LinkedHashMap,37,306160,136700,false,true
+10000,HashMap,50,5256240,1399800,false,false
+10000,TreeMap,285,681380,500480,true,false
+10000,LinkedHashMap,85,1057460,392800,false,true
