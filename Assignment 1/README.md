@@ -2,7 +2,7 @@
 
 ## Student details
 
-- Name: **REPLACE_WITH_STUDENT_NAME**
+- Name: **Emad Farooqui**
 - Register number: **REPLACE_WITH_REGISTER_NUMBER**
 - Java version used: Microsoft OpenJDK 17.0.20
 - GitHub repository: **TO_BE_ADDED_AFTER_REPOSITORY_IS_PROVIDED**

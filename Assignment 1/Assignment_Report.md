@@ -1,7 +1,7 @@
 # Design, Implementation and Validation of an Object-Oriented Campus Smart-Parking System
 
 **Programming in Java - Assignment 1 - CO1**  
-**Student:** REPLACE_WITH_STUDENT_NAME  
+**Student:** Emad Farooqui  
 **Register number:** REPLACE_WITH_REGISTER_NUMBER  
 **Repository:** TO_BE_ADDED_AFTER_REPOSITORY_IS_PROVIDED  
 **Java:** Microsoft OpenJDK 17.0.20
