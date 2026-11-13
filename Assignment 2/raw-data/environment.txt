@@ -1,0 +1,5 @@
+Measurement date: 2026-11-13
+Java: Microsoft OpenJDK 17.0.20+8-LTS, 64-bit Server VM
+CPU: AMD Ryzen 5 5600H with Radeon Graphics, 12 logical processors
+OS: Microsoft Windows NT 10.0.26300.0
+Notes: Each benchmark includes warm-up work and repeated runs. Nanosecond timings are comparative evidence on this machine, not universal guarantees.
