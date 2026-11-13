@@ -1,0 +1,10 @@
+workload,method,avg_nanos,avg_memory_bytes,estimated_intermediate_objects
+short_1x10,StringPlus,99580,33593,30
+short_1x10,StringBuilder,31440,41984,2
+short_1x10,StringBuffer,31960,41992,2
+server_1000x50,StringPlus,3563000,6297249,150000
+server_1000x50,StringBuilder,3056400,1363736,2000
+server_1000x50,StringBuffer,4739460,1358936,2000
+wide_200x200,StringPlus,13147440,20979932,120000
+wide_200x200,StringBuilder,2593200,2034561,400
+wide_200x200,StringBuffer,3616780,2022376,400
