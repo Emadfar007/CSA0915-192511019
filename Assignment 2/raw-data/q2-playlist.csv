@@ -1,0 +1,12 @@
+size,list,add_end_ns,front_churn_ns,middle_churn_ns,get_middle_ns,iterate_per_element_ns
+1000,ArrayList,154,2215,878,149,142
+1000,LinkedList,159,990,2956,1147,126
+10000,ArrayList,77,2616,1406,141,36
+10000,LinkedList,23,218,20863,10403,19
+50000,ArrayList,21,13447,6607,135,69
+50000,LinkedList,16,218,105038,53649,5
+
+size,changed_condition,avg_ns_per_end_operation
+1000,ArrayDequeUpNext,129
+10000,ArrayDequeUpNext,88
+50000,ArrayDequeUpNext,15
