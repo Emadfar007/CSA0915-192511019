@@ -1,0 +1,10 @@
+Completed-code output:
+Meena(S1) Kumar(S1) Lata(S2) Ravi(S3) John(S3) Asha(S5)
+
+hand_order=P1 P3 P5 P7 P0 P6 P2 P4
+actual_order=P1 P3 P5 P7 P0 P6 P2 P4
+size,admit_avg_ns,serve_avg_ns
+1000,1768,882
+5000,404,429
+20000,186,419
+fair_rule=effective severity improves by one after each 30 waiting minutes; rebuild before selection
