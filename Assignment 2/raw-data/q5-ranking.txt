@@ -1,0 +1,7 @@
+Completed-code output:
+[Eagles(9,6), Bisons(9,4), Panthers(9,4), Cobras(6,1)]
+
+Correct ties: [Ranked[name=Beta, points=10, goalDiff=5], Ranked[name=Alpha, points=10, goalDiff=2], Ranked[name=Zulu, points=10, goalDiff=2], Ranked[name=Gamma, points=8, goalDiff=20]]
+Faulty overflow compare(MAX,MIN)=1
+Correct compare(MAX,MIN)=-1
+Tie resolved alphabetically=true
