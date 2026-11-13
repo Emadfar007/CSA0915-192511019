@@ -1,7 +1,7 @@
 # Assignment 2 - Strings and Collections
 
 **Programming in Java - CO2**  
-**Student:** REPLACE_WITH_STUDENT_NAME  
+**Student:** Emad Farooqui  
 **Register number:** 192511019  
 **Repository:** https://github.com/Emadfar007/CSA0915-192511019  
 **Java:** Microsoft OpenJDK 17.0.20

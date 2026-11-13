@@ -1,6 +1,6 @@
 # Assignment 2 - Strings and Collections (CO2)
 
-- Student name: **REPLACE_WITH_STUDENT_NAME**
+- Student name: **Emad Farooqui**
 - Register number: **192511019**
 - Java: Microsoft OpenJDK 17.0.20
 - Repository: https://github.com/Emadfar007/CSA0915-192511019
