@@ -1,0 +1,10 @@
+Attendance completed-code output:
+Unique students: 2
+
+Investigation:
+Test1 predicted=1 actual=1
+Test2 predicted=2 actual=2
+Test3 predicted_contains=false actual=false
+Corrected predicted=1 actual=1
+
+Before TODO 1, two distinct Student objects with the same registration number may occupy different identity-hash buckets, so the observed size is typically 3. The exact result is not guaranteed by the broken program; that nondeterminism is itself evidence of the contract violation.
