@@ -1,0 +1,4 @@
+amount,from,to,expected
+100,USD,INR,8325.00 INR
+1000,INR,USD,12.01 USD
+abc,USD,INR,Invalid amount

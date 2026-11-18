@@ -1,0 +1,3 @@
+styles=4
+valid=100.00 USD = 8325.00 INR
+invalid=Invalid amount - enter a non-negative number
