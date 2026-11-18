@@ -1,0 +1,9 @@
+total_rows  routes  first_id    last_id
+100000      40      M000000000  M000099999
+
+route_number  passes
+R0            2500
+R1            2500
+R10           2500
+R11           2500
+R12           2500

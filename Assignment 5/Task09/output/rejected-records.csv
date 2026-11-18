@@ -1,0 +1,4 @@
+line_number,reason,raw_record
+25001,"expected 7 fields, found 3","BROKEN|TOO|FEW"
+50002,"negative amount","PNEG00001|192511019|Negative|R1|Stop|2027-05-31|-5.00"
+75003,"invalid ISO date","PBADDATE|192511019|Bad Date|R1|Stop|31-05-2027|1250.00"

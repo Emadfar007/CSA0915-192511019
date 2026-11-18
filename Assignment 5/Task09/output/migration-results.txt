@@ -1,0 +1,11 @@
+database_product=MySQL
+database_version=8.4.5
+driver_name=MySQL Connector/J
+driver_version=mysql-connector-j-9.2.0
+available_tables=app_user;bus_pass;bus_pass_migrated
+input_records=100003
+loaded_records=100000
+rejected_records=3
+migration_ms=9123.686
+database_rows=100000
+migration=PASS
