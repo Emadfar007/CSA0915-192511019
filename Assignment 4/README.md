@@ -44,4 +44,4 @@ java -cp "build/Task06;path/to/mysql-connector-j.jar" EventRegistrationApp --mys
 | Task05 | All four listener styles instantiated; valid and invalid conversion paths verified |
 | Task06 | Normal, invalid and duplicate registration paths verified; SQL/JDBC and pagination supplied |
 
-See `Assignment_Report.pdf` for diagrams, event tables, pseudocode, explanations, and complexity analysis.
+See `Assignment_4_Report.pdf` for diagrams, event tables, pseudocode, explanations, and complexity analysis.
