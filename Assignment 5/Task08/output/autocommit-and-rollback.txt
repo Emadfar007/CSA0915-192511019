@@ -1,0 +1,9 @@
+AUTOCOMMIT_COMPARISON
+rows,auto_commit_ms,single_transaction_ms
+10000,15463.552,3957.834
+
+ROLLBACK_TEST
+forced_failure=HY000
+failure_observed=true
+rows_after_rollback=0
+rollback_test=PASS

@@ -1,0 +1,6 @@
+experiment,row_counts,transaction,batch_size
+statement,"10;1000;10000;100000",single transaction,not applicable
+prepared,"10;1000;10000;100000",single transaction,not applicable
+prepared_batch,"10;1000;10000;100000",single transaction,1000
+autocommit_comparison,10000,"auto-commit vs one transaction",not applicable
+rollback_failure,10000,"negative amount at row 5001",1000

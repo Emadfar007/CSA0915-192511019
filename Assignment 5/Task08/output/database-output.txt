@@ -1,0 +1,10 @@
+Field           Type          Null  Key  Default
+pass_id         varchar(16)   NO    PRI  NULL
+register_number char(9)       NO    MUL  NULL
+passenger_name  varchar(100)  NO         NULL
+route_number    varchar(12)   NO    MUL  NULL
+boarding_stop   varchar(120)  NO         NULL
+validity_date   date          NO         NULL
+amount_paid     decimal(10,2) NO         NULL
+
+rows_after_rollback=0

@@ -1,0 +1,10 @@
+database=MySQL 8.4.5
+column=pass_id,type=VARCHAR,java=java.lang.String
+column=register_number,type=CHAR,java=java.lang.String
+column=passenger_name,type=VARCHAR,java=java.lang.String
+column=route_number,type=VARCHAR,java=java.lang.String
+column=boarding_stop,type=VARCHAR,java=java.lang.String
+column=validity_date,type=DATE,java=java.sql.Date
+column=amount_paid,type=DECIMAL,java=java.math.BigDecimal
+sample=P000000000,100000000,1250.00
+sample=P000000001,100000001,1250.00
