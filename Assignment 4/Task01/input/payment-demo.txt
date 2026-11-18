@@ -1,0 +1,3 @@
+registerNumber=192511019
+amount=12500.00
+method=UPI

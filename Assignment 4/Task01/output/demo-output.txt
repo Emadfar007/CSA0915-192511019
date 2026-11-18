@@ -1,0 +1,3 @@
+status=Paid: FEE-192511019-1730
+
+The exact receipt suffix is time-based. The screenshot records the successful validated payment state.
