@@ -1,0 +1,4 @@
+strategy,rows,elapsed_nanoseconds,estimated_bytes
+load_all,100000,64775899,6400000
+page,100,448000,6400
+memory_reduction,1000x,,

@@ -1,0 +1,4 @@
+register_number,student_name,event,expected
+192511019,Emad Farooqui,Code Sprint,accepted
+ABC,Emad Farooqui,Code Sprint,rejected-invalid
+192511019,Emad Farooqui,Code Sprint,rejected-duplicate

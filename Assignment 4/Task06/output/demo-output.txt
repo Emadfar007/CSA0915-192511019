@@ -1,0 +1,2 @@
+normal_invalid_duplicate=verified
+final_status=Student is already registered for this event
