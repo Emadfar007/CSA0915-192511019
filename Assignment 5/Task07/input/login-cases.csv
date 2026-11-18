@@ -1,0 +1,4 @@
+case,username,password,expected_unsafe,expected_prepared
+normal,emad,correct-test-password,true,true
+invalid,nobody,wrong-password,false,false
+injection,"nobody' OR '1'='1' -- ",wrong-password,true,false

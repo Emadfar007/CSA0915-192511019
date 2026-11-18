@@ -1,0 +1,6 @@
+Field          Type          Null  Key  Default  Extra
+username       varchar(80)   NO    PRI  NULL
+password_text  varchar(120)  NO         NULL
+
+username  password_text
+emad      correct-test-password

@@ -1,0 +1,6 @@
+line=1,result=ACCEPTED,id=P2001
+line=2,result=REJECTED,reason=field count 4
+line=3,result=REJECTED,reason=non-numeric amount
+line=4,result=REJECTED,reason=empty line
+accepted=1,rejected=3
+tests=PASS

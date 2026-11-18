@@ -1,0 +1,8 @@
+database.product=MySQL
+database.version=8.4.5
+normal.unsafe.accepted=true
+injection.input=nobody' OR '1'='1' -- 
+injection.unsafe.accepted=true
+injection.prepared.accepted=false
+expected=unsafe true, prepared false
+tests=PASS
