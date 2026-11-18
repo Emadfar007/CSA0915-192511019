@@ -1,0 +1,2 @@
+points=5
+persisted_after_restore=true
