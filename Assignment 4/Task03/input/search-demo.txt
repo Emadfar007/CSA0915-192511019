@@ -1,0 +1,3 @@
+query=Java
+category=All
+windowSizes=640x420,900x560,1200x720
