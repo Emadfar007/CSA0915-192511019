@@ -1,0 +1,5 @@
+P1001|192511017|Aarav Menon|R12|Central Station|2027-05-31|1250.00
+P1002|192511018|Damaged Missing Fields|R08
+
+P1003|192511019|Emad Farooqui|R12|Library Stop|2027-05-31|1250.00
+P1004|192511020|Non Numeric Amount|R09|West Gate|2027-05-31|NOT_A_NUMBER

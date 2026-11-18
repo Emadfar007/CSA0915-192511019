@@ -1,0 +1,7 @@
+WARNING: Skipped damaged line 2: Expected 7 fields, found 4
+normal.P1003=PassRecord[passId=P1003, registerNumber=192511019, name=Emad Farooqui, routeNumber=R12, boardingStop=Library Stop, validityDate=2027-05-31, amountPaid=1250.00]
+damaged.P1002=null
+absent.P9999=null
+missing.file=null
+route.R12.count=2
+tests=PASS

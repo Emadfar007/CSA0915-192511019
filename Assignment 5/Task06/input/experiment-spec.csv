@@ -1,0 +1,3 @@
+experiment,input_sizes,measurement
+line_count,"1 MiB;10 MiB;50 MiB","unbuffered ms;buffered ms;line count"
+pass_search,"1000;10000;100000 records","single scan;map build;map lookup;100-query totals"
