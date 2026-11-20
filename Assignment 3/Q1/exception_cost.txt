@@ -1,0 +1,123 @@
+Q1, ALTERNATIVE-CONCEPT ANALYSIS  -  THE COST OF AN EXCEPTION
+================================================================================================================
+Name: Vignesh S   Register Number: 192325002
+JVM: 21.0.12.1   warm-up 5 runs discarded, 11 measured runs, MEDIAN reported
+
+Each run performs 1,000,000 withdrawal checks.  The only thing that
+changes between the blocks below is HOW OFTEN the check fails.  That is
+the whole point: an exception is not expensive or cheap on its own, it is
+expensive IN PROPORTION TO HOW OFTEN IT IS THROWN.
+
+FAIL RATE  | DESIGN                     |  MEDIAN (ms) | ns PER CHECK |    RSD % | RELATIVE TO PRE-VALIDATION
+----------------------------------------------------------------------------------------------------------------
+0%         | pre-validation             |        0.440 |         0.44 |      6.3 | baseline
+0%         | error code -1              |        0.454 |         0.45 |      6.6 | 1.0x slower
+0%         | exception, no stack trace  |        0.605 |         0.61 |      6.2 | 1.4x slower
+0%         | exception, full stack trace |        0.609 |         0.61 |     10.2 | 1.4x slower
+----------------------------------------------------------------------------------------------------------------
+1%         | pre-validation             |        0.638 |         0.64 |      6.0 | baseline
+1%         | error code -1              |        0.675 |         0.67 |      8.4 | 1.1x slower
+1%         | exception, no stack trace  |        0.781 |         0.78 |      7.3 | 1.2x slower
+1%         | exception, full stack trace |        5.005 |         5.00 |      8.5 | 7.8x slower
+----------------------------------------------------------------------------------------------------------------
+10%        | pre-validation             |        1.233 |         1.23 |      1.8 | baseline
+10%        | error code -1              |        1.426 |         1.43 |      2.8 | 1.2x slower
+10%        | exception, no stack trace  |        2.406 |         2.41 |     15.0 | 2.0x slower
+10%        | exception, full stack trace |       43.539 |        43.54 |      6.7 | 35.3x slower
+----------------------------------------------------------------------------------------------------------------
+50%        | pre-validation             |        4.171 |         4.17 |      9.2 | baseline
+50%        | error code -1              |        4.726 |         4.73 |      0.9 | 1.1x slower
+50%        | exception, no stack trace  |        8.105 |         8.11 |      9.0 | 1.9x slower
+50%        | exception, full stack trace |      218.030 |       218.03 |      3.6 | 52.3x slower
+----------------------------------------------------------------------------------------------------------------
+100%       | pre-validation             |        0.425 |         0.42 |      7.8 | baseline
+100%       | error code -1              |        0.981 |         0.98 |      4.7 | 2.3x slower
+100%       | exception, no stack trace  |       10.330 |        10.33 |      5.9 | 24.3x slower
+100%       | exception, full stack trace |      426.110 |       426.11 |      7.3 | 1002.9x slower
+----------------------------------------------------------------------------------------------------------------
+
+raw data   -> data/Q1-raw.csv  (220 individual runs)
+summary    -> data/Q1-summary.csv
+
+WHERE THE COST IS  -  THE STACK TRACE, NOT THE throw
+----------------------------------------------------------------------------------------------------------------
+  The two exception rows differ only in one constructor argument:
+
+      super(message);                      // captures the stack
+      super(message, null, false, false);  // does not
+
+  The second form passes writableStackTrace = false, which skips
+  fillInStackTrace().  Everything else - allocating the object, the
+  throw, unwinding to the catch - is identical.  Compare the two rows at
+  100%: the gap between them IS the cost of walking the call stack and
+  allocating one StackTraceElement per frame.
+
+SPACE COST
+----------------------------------------------------------------------------------------------------------------
+  50,000 exceptions WITH a stack trace         | 771 bytes each
+  50,000 exceptions WITHOUT a stack trace      | 46 bytes each
+  50,000 boxed error codes (Long)              | 25 bytes each
+  a primitive long error code                  | 0 bytes of heap - it lives in a register or on the stack
+
+  (measured with Runtime.totalMemory() - freeMemory() around 50,000
+  retained objects; approximate, because the JVM's allocation is not
+  observable exactly, but the ORDER of the three is the finding.)
+
+THE THREE DESIGNS SIDE BY SIDE
+================================================================================================================
+                       | EXCEPTIONS                   | ERROR CODE (-1)              | PRE-VALIDATION
+----------------------------------------------------------------------------------------------------------------
+caller can ignore it   | no - checked ones must be handled | YES - -1 reads as a balance  | no - the check is the call
+error detail carried   | type, message, cause, stack  | one number, no context       | none - no error exists
+cost when nothing fails | zero (nothing is thrown)     | one comparison               | one comparison
+cost when all fails    | highest - see the 100% rows  | one comparison               | one comparison
+return value stays clean | yes - -1 is a real amount    | no - the range is stolen     | yes
+works across a deep call | yes - unwinds many frames    | every frame must forward it  | only at the top
+catches what you forgot | yes - the unexpected still throws | no                           | no - only what you checked
+
+CONCLUSION FOR THE ATM
+----------------------------------------------------------------------------------------------------------------
+  Use PRE-VALIDATION for what the customer types.  A non-numeric amount
+  is not exceptional - it is expected several times a day - and checking
+  it with a parse-and-test costs one comparison.  This is why the real
+  withdraw() checks "amount <= 0" and "amount % 100 != 0" with plain if
+  statements rather than letting something deeper throw.
+
+  Use EXCEPTIONS for what pre-validation cannot know in advance: the
+  balance (which another transaction may change), the account's
+  existence, and the card reader.  These need the type, the message and
+  the cause, they occur rarely, and they must not be ignorable - which
+  is exactly what a CHECKED exception enforces and -1 cannot.
+
+  Do NOT use an error code for a cash amount.  -1 is a valid long, so
+  "if (result == -1)" is a convention the compiler cannot enforce; one
+  caller who forgets it credits the customer with minus one paise.
+
+  The measured numbers do not overturn this.  At the 0% fail rate - the
+  ATM's normal day - the four designs are indistinguishable, because an
+  exception that is never thrown costs nothing at all.  The try block
+  itself is free: the JVM records the handler in an exception table
+  attached to the method, so entering a try costs no instructions.
+
+TWO THINGS IN THE DATA THAT ARE NOT WHAT THEY FIRST LOOK LIKE
+----------------------------------------------------------------------------------------------------------------
+  1.  The two cheap designs are SLOWER at 50% than at 100%.  That is not
+      the error-code design getting faster - it is BRANCH PREDICTION.  At
+      0% and at 100% the comparison goes the same way every time and the
+      processor predicts it perfectly.  At 50% it is a coin toss, and
+      every misprediction discards a pipeline.  The effect appears in the
+      pre-validation row and the error-code row equally, which is how we
+      know it belongs to the branch and not to either design.
+
+  2.  Our FIRST run of this program reported the error-code design at
+      2.234 ms for the 1% block but 0.732 ms for the 100% block, with an
+      RSD of 38%.  A design whose work does not depend on the fail rate
+      cannot behave that way, so the number was wrong, not surprising.
+      The cause was the JIT: each block changes the branch profile, and
+      whichever design was measured first in a block paid for the
+      recompilation.  Fixed by warming all four designs on each block's
+      own data before measuring any of them, and by a global warm-up
+      before the first block.  RSD fell from 38% to under 3%.
+      This is why Assignment 2 insisted that one execution time is not a
+      measurement: the harness reports RSD precisely so that a figure
+      this unstable announces itself instead of reaching the report.
